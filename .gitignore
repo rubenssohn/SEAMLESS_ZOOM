@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+seamvenv/
+
+# Environment and secret files
+.env
+.env.*
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# VS Code config (optional)
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs and data you want ignored
+data/evaluation_data/roadtrafficfine.xes
+data/evaluation_data/roadtrafficfine_1050.xes
+data/evaluation_data/sepsis.xes
+
+# Optional: Compiled output or builds
+dist/
+build/
+*.egg-info/

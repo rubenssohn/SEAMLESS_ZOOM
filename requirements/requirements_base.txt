@@ -1,0 +1,12 @@
+# === Required for core app ===
+flask
+numpy
+pandas
+pm4py
+# === Optional for Jupyter notebook ===
+seaborn
+matplotlib
+plotly
+ipykernel
+pygraphviz
+nbformat
