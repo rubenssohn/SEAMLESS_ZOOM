@@ -10,3 +10,4 @@ plotly
 ipykernel
 pygraphviz
 nbformat
+kaleido
