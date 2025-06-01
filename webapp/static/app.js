@@ -606,7 +606,8 @@ async function draw(inputData = null) {
         .attr("max", multiLevelGraph.length - 1)
         .attr("value", -1)
         .on('input', function() {
-            const selectedLevel = +this.value; //TODO: Added "+" to convert string to number
+            const selectedLevel = this.value;
+            const selectedAbstLevel = +selectedLevel + 1; // Defines the visable abstractin level 
             const totalLevels = multiLevelGraph.length - 1;
 
             console.log("Selected level:", selectedLevel);
@@ -631,7 +632,7 @@ async function draw(inputData = null) {
                 abstractionLayer.style("display", "block");
                 renderAbstractionLevel(selectedLevel);
             }
-            d3.select("#slider-abstraction-level-value").text(selectedLevel + 1); // TODO: Display the current level (1-indexed)
+            d3.select("#slider-abstraction-level-value").text(selectedAbstLevel); // The displayed value of the slider
     });
 
     // Contour bandwidth slider
