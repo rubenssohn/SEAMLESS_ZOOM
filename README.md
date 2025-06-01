@@ -9,6 +9,9 @@ This repository comprises a web application to seamlessly transition between ins
 3. Activate the new virtual environment with `python -m venv [namevenv]` (Recommended)
 3. Install the necessary requirements with `pip install -r requirements/requirements_base.txt` (alternative: `pip install -r requirements/requirements_freeze202505.txt`)
 
+![Demo Animation](assets/demo.gif)
+*Figure: GIF demonstrating the application for the running example.*
+
 ---
 ## HOW TO USE THE APPLICATION: 
 ## Execute Program
