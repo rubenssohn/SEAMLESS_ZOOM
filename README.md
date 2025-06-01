@@ -24,10 +24,10 @@ The program also allows .csv files, although they must be pre-processed manually
 
 Some logs recommended are: 
 * Sepsis cases: https://doi.org/10.4121/uuid:915d2bfb-7e84-49ad-a286-dc35f063a460
-* Road traffic fine management process: https://doi.org/10.1007/s00607-015-0441-1
+* Road traffic fine management process: https://doi.org/10.4121/uuid:270fd440-1057-4fb9-89a9-b699b47990f5
 
 ## Define new abstraction levels
-See `Contour lines` below.
+See *Contour lines* below.
 
 ## Interface
 ### Element transitions
