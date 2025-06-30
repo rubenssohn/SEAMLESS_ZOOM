@@ -25,6 +25,9 @@ data/evaluation_data/roadtrafficfine.xes
 data/evaluation_data/roadtrafficfine_1050.xes
 data/evaluation_data/sepsis.xes
 
+# Test environment
+testapp/
+
 # Optional: Compiled output or builds
 dist/
 build/
