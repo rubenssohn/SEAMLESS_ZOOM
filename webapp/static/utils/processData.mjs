@@ -44,4 +44,20 @@ function getUniqueValues(d, accessor) {
     return [...new Set(d.map(accessor))].sort().reverse();
 };
 
-export { convertLogtoGraph, deriveDFRelations, getUniqueValues };
+function sortStringArrayByStartNumber (arr, descending = false) {
+    const sortedArr = arr.slice().sort((a, b) => {
+        const [numA, strA = ""] = a.split(/_(.*)/s);
+        const [numB, strB = ""] = b.split(/_(.*)/s);
+
+        const intA = parseInt(numA, 10);
+        const intB = parseInt(numB, 10);
+
+        return intA !== intB
+            ? intA - intB
+            : strA.localeCompare(strB)
+    });
+
+    return descending ? sortedArr.reverse() : sortedArr;
+};
+
+export { convertLogtoGraph, deriveDFRelations, getUniqueValues, sortStringArrayByStartNumber };

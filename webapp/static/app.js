@@ -2,7 +2,7 @@
 // MAIN DRAWING FUNCTION
 // -----------------------------
 // Import
-import { convertLogtoGraph, getUniqueValues } from './utils/processData.mjs';
+import { convertLogtoGraph, getUniqueValues, sortStringArrayByStartNumber } from './utils/processData.mjs';
 
 
 async function draw(inputData = null) {
@@ -811,7 +811,7 @@ function getUniqueValues(d, accessor) {
     return [...new Set(d.map(accessor))].sort().reverse()
 }  */
 
-function sortStringArrayByStartNumber (arr, descending = false) {
+/* function sortStringArrayByStartNumber (arr, descending = false) {
     const sortedArr = arr.slice().sort((a, b) => {
         const [numA, strA = ""] = a.split(/_(.*)/s);
         const [numB, strB = ""] = b.split(/_(.*)/s);
@@ -825,7 +825,7 @@ function sortStringArrayByStartNumber (arr, descending = false) {
     });
 
     return descending ? sortedArr.reverse() : sortedArr;
-}
+} */
 
 // -----------------------------
 // MODULES FOR CREATING SUPER NODES/EDGES
