@@ -931,6 +931,8 @@ function exportData() {
         exportTextFile();
     }, 100);
 }
+// Add event listener to the export button
+window.exportData = exportData;
 
 function exportSVGDOM() {
     // Adapted from source: https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an
