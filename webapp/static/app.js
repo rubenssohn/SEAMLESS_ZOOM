@@ -1,6 +1,10 @@
 // -----------------------------
 // MAIN DRAWING FUNCTION
 // -----------------------------
+// Import
+import { convertLogtoGraph, getUniqueValues } from './utils/processData.mjs';
+
+
 async function draw(inputData = null) {
     d3.select("#chart").selectAll("*").remove();
     let csvdata = inputData;
@@ -739,7 +743,7 @@ async function draw(inputData = null) {
 // -----------------------------
 // MODULES FOR PROCESSING DATA
 // -----------------------------
-async function loadData(fileName) {
+/* async function loadData(fileName) {
     const ext = fileName.split('.').pop().toLowerCase();
   
     switch (ext) {
@@ -762,9 +766,9 @@ async function loadDataFromServer(endpoint) {
     default:
       throw new Error(`Unsupported file type: .${ext}`);
   }
-}
+}  */
 
-function convertLogtoGraph(d, groupBy, xAccessor, yAccessor, idAccessor){
+/* function convertLogtoGraph(d, groupBy, xAccessor, yAccessor, idAccessor){
     let graph = [{type: "directed"}]
     let nodes = d.map((object, index) => ({
         ...object,
@@ -772,7 +776,7 @@ function convertLogtoGraph(d, groupBy, xAccessor, yAccessor, idAccessor){
     }));
     let edges = deriveDFRelations(nodes, groupBy, xAccessor, yAccessor, idAccessor);
     return { 'graph': graph, 'nodes': nodes, 'edges': edges };
-};
+}; 
 
 function deriveDFRelations(d, groupBy, xAccessor, yAccessor, idAccessor){
     const eventgroups = d3.group(d, groupBy);
@@ -805,7 +809,7 @@ function deriveDFRelations(d, groupBy, xAccessor, yAccessor, idAccessor){
 
 function getUniqueValues(d, accessor) {
     return [...new Set(d.map(accessor))].sort().reverse()
-}
+}  */
 
 function sortStringArrayByStartNumber (arr, descending = false) {
     const sortedArr = arr.slice().sort((a, b) => {
