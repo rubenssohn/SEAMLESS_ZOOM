@@ -3,6 +3,7 @@
 // -----------------------------
 // Import
 import { convertLogtoGraph, getUniqueValues, sortStringArrayByStartNumber } from './utils/processData.mjs';
+import { defineSuperNodes, defineSuperEdges } from './vizmodules/nodeAbstraction.mjs';
 
 
 async function draw(inputData = null) {
@@ -830,19 +831,18 @@ function sortStringArrayByStartNumber (arr, descending = false) {
 // -----------------------------
 // MODULES FOR CREATING SUPER NODES/EDGES
 // -----------------------------
-function defineSuperNodes(nodes, xAccessor, yAccessor, levelIndex) {
+/* function defineSuperNodes(nodes, xAccessor, yAccessor, levelIndex) {
     const nodeGroups = d3.group(nodes, (d) => yAccessor(d))
     let nodeId = 0;
     const superNodes = Array.from(nodeGroups, ([y_key, group]) => ({
         id: `lv${levelIndex}_n${nodeId++}`,
         y: y_key,
         x: {
-            /* for date format
-            min: new Date(d3.min(group, xAccessor)),
-            mean: new Date(d3.mean(group, xAccessor)),
-            median: new Date(d3.median(group, xAccessor)),
-            max: new Date(d3.max(group, xAccessor))
-            */
+            //for date format
+            //min: new Date(d3.min(group, xAccessor)),
+            //mean: new Date(d3.mean(group, xAccessor)),
+            //median: new Date(d3.median(group, xAccessor)),
+            //max: new Date(d3.max(group, xAccessor))
             
             min: d3.min(group, xAccessor),
             mean: d3.mean(group, xAccessor),
@@ -920,7 +920,7 @@ function defineSuperEdges(edges, superNodes, allNodes, levelIndex, xAccessor, yA
         });
     }
     return superEdges;
-}
+} */
 
 // == EXPORT GRAPH ==
 function exportData() {
