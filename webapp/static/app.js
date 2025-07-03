@@ -6,7 +6,8 @@ import { convertLogtoGraph, getUniqueValues, sortStringArrayByStartNumber } from
 import { defineSuperNodes, defineSuperEdges } from './vizmodules/nodeAbstraction.mjs';
 import { exportData } from './utils/exportData.mjs';
 import { idAccessor, timeAccessor, actAccessor, caseAccessor, resAccessor, nodes, edges } from './utils/parsers.mjs';
-
+import { dimensions } from './layout/chartDimensions.mjs';
+import { SCALE } from './layout/scales.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -56,7 +57,7 @@ async function draw(inputData = null) {
     //let cases = getUniqueValues(nodes(data), caseAccessor);
     
     // Define chart dimensions
-    let dimensions = {
+/*     let dimensions = {
         width: 800, // default: 800
         height: 500, // default: 500
         margin: 
@@ -66,11 +67,11 @@ async function draw(inputData = null) {
             left: 230, //140 for standard // 230 for large activity names
             right: 50,
         }
-    };
+    }; */
     
     // Container dimensions
-    dimensions.ctrWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right
-    dimensions.ctrHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom
+/*     dimensions.ctrWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right
+    dimensions.ctrHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom */
 
     // Scales
     /* TIMESTAMP
