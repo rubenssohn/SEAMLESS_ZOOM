@@ -8,6 +8,7 @@ import { exportData } from './utils/exportData.mjs';
 import { idAccessor, timeAccessor, actAccessor, caseAccessor, resAccessor, nodes, edges } from './utils/parsers.mjs';
 import { dimensions } from './layout/chartDimensions.mjs';
 import { SCALE } from './layout/scales.mjs';
+import { drawAxis } from './components/axes.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -230,7 +231,7 @@ async function draw(inputData = null) {
 
     
     // Draw axes
-    const xAxis = d3.axisBottom(xScale)
+/*     const xAxis = d3.axisBottom(xScale)
     const xAxisName = "Relative time (in days)"
 
     ctr.append('g')
@@ -243,7 +244,15 @@ async function draw(inputData = null) {
         .attr('x', dimensions.ctrWidth / 2)
         .attr('y', dimensions.margin.bottom - 10)
         .attr('fill', 'black')
-        .text(xAxisName)
+        .text(xAxisName) */
+
+    drawAxis(ctr, xScale, 'bottom', dimensions, {
+        className: 'x-axis',
+        axisLabel: 'Relative time (in days)',
+        labelDistance: -10,
+        });
+
+    console.log(dimensions.ctrHeight);
 
     const yAxis = d3.axisLeft(yScale)
         .ticks(d3.max(nodes(data), caseAccessor))
