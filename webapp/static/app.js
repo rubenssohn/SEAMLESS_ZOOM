@@ -4,6 +4,7 @@
 // Import
 import { convertLogtoGraph, getUniqueValues, sortStringArrayByStartNumber } from './utils/processData.mjs';
 import { defineSuperNodes, defineSuperEdges } from './vizmodules/nodeAbstraction.mjs';
+import { exportData } from './utils/exportData.mjs';
 
 
 async function draw(inputData = null) {
@@ -923,7 +924,17 @@ function defineSuperEdges(edges, superNodes, allNodes, levelIndex, xAccessor, yA
 } */
 
 // == EXPORT GRAPH ==
-function exportData() {
+// Add event listener to the export button
+//window.exportData = exportData; // (Old)
+
+const exportButton = document.getElementById('button-export');
+exportButton.addEventListener('click', () => {
+  console.log("Exporting data...");
+  exportData();
+  console.log("Data exported successfully.");
+});
+
+/* function exportData() {
     // Export SVG
     exportSVGDOM();
     // Export text file (timer to avoid collision)
@@ -931,8 +942,6 @@ function exportData() {
         exportTextFile();
     }, 100);
 }
-// Add event listener to the export button
-window.exportData = exportData;
 
 function exportSVGDOM() {
     // Adapted from source: https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an
@@ -1012,7 +1021,7 @@ function exportTextFile() {
     document.body.appendChild(downloadLinkText);
     downloadLinkText.click(); // trigger download
     document.body.removeChild(downloadLinkText);  
-}
+} */
 
 draw()
 
