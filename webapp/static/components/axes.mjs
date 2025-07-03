@@ -14,7 +14,7 @@ function drawAxis(container, scale, orientation, dimensions, options = {}) {
         tickFormat,
         tickPadding,
         opacity = 1,
-        // defaults
+        removeDomain = false,
     } = options;
 
     // Create the axis
@@ -46,7 +46,10 @@ function drawAxis(container, scale, orientation, dimensions, options = {}) {
         .attr("transform", translate)
         .call(axis);
 
-    console.log("translate is:", translate);
+    // Conditionally remove the domain
+    if (removeDomain) {
+        axisGroup.select(".domain").remove();
+    }
 
     // Add axis label
     if (axisLabel) {
@@ -67,13 +70,13 @@ function drawAxis(container, scale, orientation, dimensions, options = {}) {
             left: {
                 x: -dimensions.ctrHeight / 2,
                 y: -dimensions.margin.left + labelDistance,
-                rotation: labelRotationDegree,
+                rotation: labelRotationDegree || -90,
                 anchor: 'middle'
             },
             right: {
                 x: dimensions.ctrHeight / 2,
                 y: dimensions.ctrWidth + labelDistance, // unlikely use case
-                rotation: labelRotationDegree,
+                rotation: labelRotationDegree || +90,
                 anchor: 'middle'
             }
         }[orientation];
@@ -87,7 +90,7 @@ function drawAxis(container, scale, orientation, dimensions, options = {}) {
             .text(axisLabel);
 
         if (labelPos.rotation !== 0) {
-            label.attr('transform', `rotate(${labelPos.rotation})`);
+            label.attr('transform', `rotate(${labelPos.rotation}, ${labelPos.x}, ${labelPos.y})`);
         }
     }
 

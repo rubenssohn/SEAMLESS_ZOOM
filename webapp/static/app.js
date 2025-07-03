@@ -246,15 +246,24 @@ async function draw(inputData = null) {
         .attr('fill', 'black')
         .text(xAxisName) */
 
+    // Draw x-axis
     drawAxis(ctr, xScale, 'bottom', dimensions, {
         className: 'x-axis',
         axisLabel: 'Relative time (in days)',
         labelDistance: -10,
         });
 
-    console.log(dimensions.ctrHeight);
+    // Draw y-axis
+    drawAxis(ctr, yScale, 'left', dimensions, {
+        className: 'y-axis',
+        axisLabel: 'Activities',
+        ticks: d3.max(nodes(data), caseAccessor),
+        tickPadding: 15,
+        removeDomain: true,      // remove the y-axis line domain
+        opacity: opacityLevelYAxis
+    });
 
-    const yAxis = d3.axisLeft(yScale)
+/*     const yAxis = d3.axisLeft(yScale)
         .ticks(d3.max(nodes(data), caseAccessor))
         .tickPadding(15)
         //.tickFormat((d) => `${d}`)
@@ -272,13 +281,11 @@ async function draw(inputData = null) {
         .html(yAxisName)
         .style('transform', 'rotate(270deg')
         .style('text-anchor', 'middle')
-        .style('opacity', opacityLevelYAxis);
+        .style('opacity', opacityLevelYAxis); */
 
 
 
-
-
-
+        
 
 
 
