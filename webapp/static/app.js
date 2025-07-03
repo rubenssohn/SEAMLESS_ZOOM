@@ -79,23 +79,25 @@ async function draw(inputData = null) {
         .domain(d3.extent(nodes(data), timeAccessor))
         .range([0, dimensions.ctrWidth])
     */
-    const xScale = d3.scaleLinear()
+/*     const xScale = d3.scaleLinear()
         .domain(d3.extent(nodes(data), timeAccessor))
-        .range([0, dimensions.ctrWidth])
+        .range([0, dimensions.ctrWidth]) */
 
+    const xScale = SCALE.linear(d3.extent(nodes(data), timeAccessor), dimensions, { vertical: false });
     
     console.log(nodes(data))
 
-    const yScale = d3.scalePoint()
+/*     const yScale = d3.scalePoint()
         .domain(sortStringArrayByStartNumber(activities, true))
         .range([dimensions.ctrHeight, 0])
-        .padding(1)
+        .padding(1) */
+    const yScale = SCALE.categories(activities, dimensions);
 
-    let edgeFreq = [];
+/*     let edgeFreq = [];
     const strokeScale = d3.scaleLinear()
         .domain(d3.extent(edgeFreq))
         .range([1, 10])
-        .clamp(true);
+        .clamp(true); */
 
     // Draw canvas
     const svg = d3.select('#chart')
