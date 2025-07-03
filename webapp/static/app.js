@@ -7,6 +7,7 @@ import { defineSuperNodes, defineSuperEdges } from './vizmodules/nodeAbstraction
 import { exportData } from './utils/exportData.mjs';
 
 
+// Graph drawing function
 async function draw(inputData = null) {
     d3.select("#chart").selectAll("*").remove();
     let csvdata = inputData;
@@ -1050,6 +1051,7 @@ document.getElementById('upload-form').addEventListener('submit', async function
 });
 
 // Reset the chart with default data
-document.getElementById('button-reset').addEventListener('click', () => {
+const resetButton = document.getElementById('button-reset');
+resetButton.addEventListener('click', () => {
   draw(null);
 });
