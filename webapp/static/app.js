@@ -9,6 +9,8 @@ import { idAccessor, timeAccessor, actAccessor, caseAccessor, resAccessor, nodes
 import { dimensions } from './layout/chartDimensions.mjs';
 import { SCALE } from './layout/scales.mjs';
 import { drawAxis } from './components/axes.mjs';
+import { CONTOURGRAPH } from './charts/contourGraph.mjs';
+import { assignGraphByContours } from './vizmodules/graphContoursMapping.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -454,7 +456,7 @@ async function draw(inputData = null) {
     
     // == CONTOUR GRAPH ==
     // Create contours
-    function generateContours(nodes, bandwidth, threshold) {
+/*     function generateContours(nodes, bandwidth, threshold) {
         return d3.contourDensity()
             .x(d => xScale(timeAccessor(d)))
             .y(d => yScale(actAccessor(d)))
@@ -462,11 +464,11 @@ async function draw(inputData = null) {
             .bandwidth(bandwidth)
             .thresholds(threshold)
             (nodes);
-    }
-    let contours = generateContours(nodes(data), currentContourBandwidth, currentContourThreshold);
+    } */
+    let contours = CONTOURGRAPH.generateContours(nodes(data), currentContourBandwidth, currentContourThreshold, dimensions, timeAccessor, xScale, actAccessor, yScale);
 
     // Draw contour graph
-    function drawContourGraph(contoursData) {
+/*     function drawContourGraph(contoursData) {
         // Remove old contours
         ctr.select(".contour-graph").remove();
 
@@ -478,22 +480,22 @@ async function draw(inputData = null) {
             .data(contoursData)
             .join("path")
             .attr("d", d3.geoPath())
-    }
-    drawContourGraph(contours);
+    } */
+    CONTOURGRAPH.drawContourGraph(contours, ctr);
 
     // Update contours function
-    function updateContours() {
+/*     function updateContours() {
         console.log("Contour graph with new values:")
         // Generate new contours with current values of bandwidth and thresholds
-        contours = generateContours(nodes(data), currentContourBandwidth, currentContourThreshold);
+        contours = generateContours(nodes(data), currentContourBandwidth, currentContourThreshold, dimensions, timeAccessor, xScale, actAccessor, yScale);
 
         console.log("Contours data:", contours.length)
         // Re-render the contour graph with the new contours
-        drawContourGraph(contours);
+        drawContourGraph(contours, ctr);
 
         d3.select(".contour-graph")
             .style("display", toggleContours ? "block" : "none");
-    }
+    } */
 
 
 
@@ -503,7 +505,7 @@ async function draw(inputData = null) {
     console.log(contours)
 
     // Creating multilevelgraph data
-    function assignGraphByContours(graphData, contours) {
+/*     function assignGraphByContours(graphData, contours) {
         // Note: Contours array is 0=outermost layer, n=innermost layer.
         const nodes = graphData.nodes
         const edges = graphData.edges
@@ -542,17 +544,17 @@ async function draw(inputData = null) {
         }
         outliers.edges = getEdgesForNodes(edges, outliers.nodes);
         return [...contourLevels, outliers];
-    };
-    let levelData = assignGraphByContours(data, contours)
+    }; */
+    let levelData = assignGraphByContours(data, contours, timeAccessor, xScale, actAccessor, yScale)
     console.info("Level data (nodes and edges for each level):")
     console.log(levelData)
     console.log(data)
 
-    function getEdgesForNodes(edges, nodes) {
+/*     function getEdgesForNodes(edges, nodes) {
         const nodeIds = new Set(nodes.map(d => d.id));
         const connectedEdges = edges.filter(d => nodeIds.has(d.source) || nodeIds.has(d.target));
         return connectedEdges;
-    }
+    } */
 
     function multiLevelGraphBuilder(graphData, levelData) {
         const multiLevelGraphData = []
@@ -607,7 +609,7 @@ async function draw(inputData = null) {
         previousLevelIndex = -1;
 
         // Regenerate the multi-level graph
-        levelData = assignGraphByContours(data, contours);
+        levelData = assignGraphByContours(data, contours, timeAccessor, xScale, actAccessor, yScale);
         multiLevelGraph = multiLevelGraphBuilder(data, levelData);
 
         // Reset the abstraction level slider
@@ -666,12 +668,32 @@ async function draw(inputData = null) {
     d3.select("#contour-bandwidth-slider").on("input", function() {
         currentContourBandwidth = +this.value;
         d3.select("#contour-bandwidth-value").text(currentContourBandwidth);
-        updateContours();
+        //updateContours();
+        console.log("Contour graph with new values:")
+        // Generate new contours with current values of bandwidth and thresholds
+        contours = CONTOURGRAPH.generateContours(nodes(data), currentContourBandwidth, currentContourThreshold, dimensions, timeAccessor, xScale, actAccessor, yScale);
+
+        console.log("Contours data:", contours.length)
+        // Re-render the contour graph with the new contours
+        CONTOURGRAPH.drawContourGraph(contours, ctr);
+
+        d3.select(".contour-graph")
+            .style("display", toggleContours ? "block" : "none");
     });
     d3.select("#contour-threshold-slider").on("input", function() {
         currentContourThreshold = +this.value;
         d3.select("#contour-threshold-value").text(currentContourThreshold);
-        updateContours();
+        //updateContours();
+        console.log("Contour graph with new values:")
+        // Generate new contours with current values of bandwidth and thresholds
+        contours = CONTOURGRAPH.generateContours(nodes(data), currentContourBandwidth, currentContourThreshold, dimensions, timeAccessor, xScale, actAccessor, yScale);
+
+        console.log("Contours data:", contours.length)
+        // Re-render the contour graph with the new contours
+        CONTOURGRAPH.drawContourGraph(contours, ctr);
+
+        d3.select(".contour-graph")
+            .style("display", toggleContours ? "block" : "none");
     });
 
     // Update multilevel graph
