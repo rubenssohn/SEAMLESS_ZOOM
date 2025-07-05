@@ -11,6 +11,7 @@ import { SCALE } from './layout/scales.mjs';
 import { drawAxis } from './components/axes.mjs';
 import { CONTOURGRAPH } from './charts/contourGraph.mjs';
 import { assignGraphByContours } from './vizmodules/graphContoursMapping.mjs';
+import { multiLevelGraphBuilder } from './vizmodules/multiLevelGraphBuilder.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -42,6 +43,7 @@ async function draw(inputData = null) {
     
 
     // LevelIndex tracker and transitions
+    let levelIndex = -1; 
     let previousLevelIndex = -1;
     let toggleHideInstanceElements = false;
     let toggleContours = false;
@@ -556,7 +558,7 @@ async function draw(inputData = null) {
         return connectedEdges;
     } */
 
-    function multiLevelGraphBuilder(graphData, levelData) {
+/*     function multiLevelGraphBuilder(graphData, levelData) {
         const multiLevelGraphData = []
 
         // Create a set of new nodes and edges for each new abstraction layer
@@ -593,14 +595,14 @@ async function draw(inputData = null) {
 
         // Create nodes by summarizing or leave as is
         return multiLevelGraphData
-    }
+    } */
 
-    let multiLevelGraph = multiLevelGraphBuilder(data, levelData)
+    let multiLevelGraph = multiLevelGraphBuilder(data, levelData, timeAccessor, actAccessor);
     console.info("Multi level graph:")
     console.log(multiLevelGraph)
 
     // Function to update abstraction graph
-    function updateMultiLevelGraph(levelIndex) {
+/*     function updateMultiLevelGraph(levelIndex) {
         // Return updating message
         d3.select("#graph-update-status").text("Updating graph...");
 
@@ -610,7 +612,7 @@ async function draw(inputData = null) {
 
         // Regenerate the multi-level graph
         levelData = assignGraphByContours(data, contours, timeAccessor, xScale, actAccessor, yScale);
-        multiLevelGraph = multiLevelGraphBuilder(data, levelData);
+        multiLevelGraph = multiLevelGraphBuilder(data, levelData, timeAccessor, actAccessor);
 
         // Reset the abstraction level slider
         d3.select("#slider-abstraction-level")
@@ -624,7 +626,7 @@ async function draw(inputData = null) {
         // Show finished message
         d3.select("#graph-update-status").text("Successful graph update!");
         setTimeout(() => {d3.select("#graph-update-status").text("")}, 6000);
-    }
+    } */
 
 
     // == INTERFACE ==
@@ -698,7 +700,30 @@ async function draw(inputData = null) {
 
     // Update multilevel graph
     d3.select("#button-update-abstraction-graph").on("click", function() {
-        updateMultiLevelGraph();  // Call the function that updates the abstraction graph
+        //updateMultiLevelGraph();  // Call the function that updates the abstraction graph
+        // Return updating message
+        d3.select("#graph-update-status").text("Updating graph...");
+
+        // Reset the level indices
+        levelIndex = -1; 
+        previousLevelIndex = -1;
+
+        // Regenerate the multi-level graph
+        levelData = assignGraphByContours(data, contours, timeAccessor, xScale, actAccessor, yScale);
+        multiLevelGraph = multiLevelGraphBuilder(data, levelData, timeAccessor, actAccessor);
+
+        // Reset the abstraction level slider
+        d3.select("#slider-abstraction-level")
+            .attr("max", multiLevelGraph.length - 1)
+            .property("value", -1)  // Reset to default level (e.g., -1 means "off")
+            .dispatch("input");
+        
+        //Reset the abstraction level
+        renderAbstractionLevel(levelIndex)
+
+        // Show finished message
+        d3.select("#graph-update-status").text("Successful graph update!");
+        setTimeout(() => {d3.select("#graph-update-status").text("")}, 6000);
     });
     
     // Instance element rendering toggle

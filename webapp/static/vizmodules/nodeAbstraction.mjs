@@ -27,7 +27,7 @@ function defineSuperNodes(nodes, xAccessor, yAccessor, levelIndex) {
     return superNodes;
 };
 
-function defineSuperEdges(edges, superNodes, allNodes, levelIndex, xAccessor, yAccessor) {
+function defineSuperEdges(edges, superNodes, allNodes, xAccessor, yAccessor, levelIndex) {
 
     // Map each node to its super node, if applicable
     const nodeToSuperNodeMap = new Map();
