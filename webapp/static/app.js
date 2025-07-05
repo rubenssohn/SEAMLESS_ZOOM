@@ -12,6 +12,7 @@ import { drawAxis } from './components/axes.mjs';
 import { CONTOURGRAPH } from './charts/contourGraph.mjs';
 import { assignGraphByContours } from './vizmodules/graphContoursMapping.mjs';
 import { multiLevelGraphBuilder } from './vizmodules/multiLevelGraphBuilder.mjs';
+import { renderInstanceGraph } from './charts/instanceGraph.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -176,7 +177,7 @@ async function draw(inputData = null) {
 
 
 
-    function renderInstanceGraph(currentAbstractionLevel) {
+/*     function renderInstanceGraph(currentAbstractionLevel) {
         const ctrInstance = ctr.append('g')
             .attr('class', 'instance-graph')
             .style('opacity', 1)
@@ -215,7 +216,7 @@ async function draw(inputData = null) {
             .attr('activity', actAccessor)
             .attr('timestamp', timeAccessor)
             .attr('resource', resAccessor)
-    }
+    } */
 
 
 
@@ -801,7 +802,8 @@ async function draw(inputData = null) {
     }
 
     //countourGraph()
-    renderInstanceGraph(0)
+    //renderInstanceGraph(0);
+    renderInstanceGraph(data, link, ctr, timeAccessor, xScale, actAccessor, yScale);
     console.log("end")
 }
 
