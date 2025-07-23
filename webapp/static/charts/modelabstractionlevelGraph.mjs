@@ -85,8 +85,8 @@ function renderAbstractionLevelGraph(
     // Create a super edges group
     const superEdgesGroup = layer.append("g").attr("class", classNameAbstractionLevelEdges);
     
+    /*
     // Link drawing function according to a cubic bezier-curve
-    
     const linkSuper = d => {
         // Calculate the source and target coordinates
         const [sourceX, sourceY] = [xScale(d.source_coordinates[0]), yScale(d.source_coordinates[1])];
@@ -98,13 +98,13 @@ function renderAbstractionLevelGraph(
         const verticalMidPointY = sourceY + (targetY - sourceY) * curveStrength - curveOffset;
 
         return `M${sourceX},${sourceY} C${sourceX},${verticalMidPointY} ${targetX},${verticalMidPointY} ${targetX},${targetY}`;
-    };
+    };*/
     
     
     superEdgesGroup.selectAll("path")
         .data(edges)
         .join("path")
-        .attr("d", linkSuper)
+        .attr("d", link)
         .attr("fill", "none")
         //.attr("stroke", "#555")
         //.attr("stroke-width", d => d.frequency || 1)

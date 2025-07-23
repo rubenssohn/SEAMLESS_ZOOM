@@ -159,12 +159,27 @@ async function draw(inputData = null) {
             `translate(${dimensions.margin.left}, ${dimensions.margin.top})`
         )
 
-    // Draw edges
-    const link = d3.linkVertical(d3.curveBumpY)
+    // Draw edges for instance graph
+    const linkInstance = d3.linkVertical(d3.curveBumpY)
         .source(d => d.source_coordinates)
         .target(d => d.target_coordinates)
         .x(d => xScale(d[0]))
         .y(d => yScale(d[1]))
+
+    // Draw edges for abstraction level graph
+    // Link drawing function according to a cubic bezier-curve
+    const linkBundled = d => {
+        // Calculate the source and target coordinates
+        const [sourceX, sourceY] = [xScale(d.source_coordinates[0]), yScale(d.source_coordinates[1])];
+        const [targetX, targetY] = [xScale(d.target_coordinates[0]), yScale(d.target_coordinates[1])];
+        
+        // Define the curve strength and mid-point
+        const curveStrength = 0.3;
+        const curveOffset = 0;
+        const verticalMidPointY = sourceY + (targetY - sourceY) * curveStrength - curveOffset;
+
+        return `M${sourceX},${sourceY} C${sourceX},${verticalMidPointY} ${targetX},${verticalMidPointY} ${targetX},${targetY}`;
+    };
 
 
 
@@ -664,7 +679,7 @@ async function draw(inputData = null) {
             } else {
                 // Render the graph for selected level
                 abstractionLayer.style("display", "block");
-                renderAbstractionLevelGraph(multiLevelGraph, selectedLevel, previousLevelIndex, link, ctr, xScale, yScale, {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements}); //data, link, ctr, timeAccessor, xScale, actAccessor, yScale
+                renderAbstractionLevelGraph(multiLevelGraph, selectedLevel, previousLevelIndex, linkBundled, ctr, xScale, yScale, {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements}); //data, link, ctr, timeAccessor, xScale, actAccessor, yScale
                 previousLevelIndex = selectedLevel;
             }
             d3.select("#slider-abstraction-level-value").text(selectedAbstLevel); // The displayed value of the slider
@@ -723,7 +738,7 @@ async function draw(inputData = null) {
             .dispatch("input");
         
         //Reset the abstraction level
-        renderAbstractionLevelGraph(multiLevelGraph, levelIndex, previousLevelIndex, link, ctr, xScale, yScale, options = {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements})
+        renderAbstractionLevelGraph(multiLevelGraph, levelIndex, previousLevelIndex, linkBundled, ctr, xScale, yScale, options = {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements})
         previousLevelIndex = currentLevelIndex;
 
         // Show finished message
@@ -807,7 +822,7 @@ async function draw(inputData = null) {
 
     //countourGraph()
     //renderInstanceGraph(0);
-    renderInstanceGraph(data, link, ctr, timeAccessor, xScale, actAccessor, yScale);
+    renderInstanceGraph(data, linkInstance, ctr, timeAccessor, xScale, actAccessor, yScale);
     console.log("end")
 }
 
