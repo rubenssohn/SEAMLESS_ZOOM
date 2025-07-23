@@ -13,6 +13,7 @@ import { CONTOURGRAPH } from './charts/contourGraph.mjs';
 import { assignGraphByContours } from './vizmodules/graphContoursMapping.mjs';
 import { multiLevelGraphBuilder } from './vizmodules/multiLevelGraphBuilder.mjs';
 import { renderInstanceGraph } from './charts/instanceGraph.mjs';
+import { renderAbstractionLevelGraph } from './charts/modelabstractionlevelGraph.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -295,6 +296,7 @@ async function draw(inputData = null) {
 
 
     // Draw abstraction levels
+/*
     function renderAbstractionLevel(levelIndex) {
         // Hide previous layer
         ctr.select("#abstraction-layer").remove();
@@ -452,7 +454,7 @@ async function draw(inputData = null) {
             .style("opacity", opacityLevelDFG);
 
     }
-
+*/
 
 
 
@@ -662,7 +664,7 @@ async function draw(inputData = null) {
             } else {
                 // Render the graph for selected level
                 abstractionLayer.style("display", "block");
-                renderAbstractionLevel(selectedLevel);
+                renderAbstractionLevelGraph(multiLevelGraph, selectedLevel, previousLevelIndex, link, ctr, xScale, yScale, {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements}); //data, link, ctr, timeAccessor, xScale, actAccessor, yScale
             }
             d3.select("#slider-abstraction-level-value").text(selectedAbstLevel); // The displayed value of the slider
     });
@@ -720,7 +722,7 @@ async function draw(inputData = null) {
             .dispatch("input");
         
         //Reset the abstraction level
-        renderAbstractionLevel(levelIndex)
+        renderAbstractionLevelGraph(multiLevelGraph, levelIndex, previousLevelIndex, link, ctr, xScale, yScale, options = {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements})
 
         // Show finished message
         d3.select("#graph-update-status").text("Successful graph update!");
