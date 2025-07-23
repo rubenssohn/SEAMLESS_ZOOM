@@ -47,6 +47,7 @@ async function draw(inputData = null) {
     // LevelIndex tracker and transitions
     let levelIndex = -1; 
     let previousLevelIndex = -1;
+    let currentLevelIndex = -1;
     let toggleHideInstanceElements = false;
     let toggleContours = false;
     let switcherGradualElementRendering = 0;
@@ -738,12 +739,12 @@ async function draw(inputData = null) {
             .dispatch("input");
         
         //Reset the abstraction level
-        renderAbstractionLevelGraph(multiLevelGraph, levelIndex, previousLevelIndex, linkBundled, ctr, xScale, yScale, options = {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements})
+        renderAbstractionLevelGraph(multiLevelGraph, levelIndex, previousLevelIndex, linkBundled, ctr, xScale, yScale, {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements})
         previousLevelIndex = currentLevelIndex;
 
         // Show finished message
         d3.select("#graph-update-status").text("Successful graph update!");
-        setTimeout(() => {d3.select("#graph-update-status").text("")}, 6000);
+        setTimeout(() => {d3.select("#graph-update-status").text("")}, 3000);
     });
     
     // Instance element rendering toggle
