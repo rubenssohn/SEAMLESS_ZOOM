@@ -665,6 +665,7 @@ async function draw(inputData = null) {
                 // Render the graph for selected level
                 abstractionLayer.style("display", "block");
                 renderAbstractionLevelGraph(multiLevelGraph, selectedLevel, previousLevelIndex, link, ctr, xScale, yScale, {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements}); //data, link, ctr, timeAccessor, xScale, actAccessor, yScale
+                previousLevelIndex = selectedLevel;
             }
             d3.select("#slider-abstraction-level-value").text(selectedAbstLevel); // The displayed value of the slider
     });
@@ -723,6 +724,7 @@ async function draw(inputData = null) {
         
         //Reset the abstraction level
         renderAbstractionLevelGraph(multiLevelGraph, levelIndex, previousLevelIndex, link, ctr, xScale, yScale, options = {opacityLevelDFG: opacityLevelDFG, opacityLevelActRange: opacityLevelActRange, toggleHideInstanceElements: toggleHideInstanceElements})
+        previousLevelIndex = currentLevelIndex;
 
         // Show finished message
         d3.select("#graph-update-status").text("Successful graph update!");

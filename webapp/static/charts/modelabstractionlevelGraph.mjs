@@ -41,7 +41,6 @@ function renderAbstractionLevelGraph(
     } = options;
     
     
-    
     // Hide previous layer
     container.select(`#${classNameAbstractionLevelGraph}`).remove();
     console.log(currentLevelIndex)
@@ -74,7 +73,7 @@ function renderAbstractionLevelGraph(
             d3.selectAll(instanceEdgeIds.join(",")).classed(classNameHiddenInstanceEdges, true);
         }
     }
-    previousLevelIndex = currentLevelIndex;
+    // previousLevelIndex = currentLevelIndex;
 
     if (!levelGraph) return;
     
