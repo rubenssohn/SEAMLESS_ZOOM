@@ -15,6 +15,7 @@ import { multiLevelGraphBuilder } from './vizmodules/multiLevelGraphBuilder.mjs'
 import { renderInstanceGraph } from './charts/instanceGraph.mjs';
 import { renderAbstractionLevelGraph } from './charts/modelabstractionlevelGraph.mjs';
 import { defineArrowHeads } from './components/arrowheads.mjs';
+import { defineLinkVertical, defineLinkBezier } from './vizmodules/linkCalculator.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -165,14 +166,19 @@ async function draw(inputData = null) {
         )
 
     // Draw edges for instance graph
+    const linkInstance = defineLinkVertical(xScale, yScale);
+    /*
     const linkInstance = d3.linkVertical(d3.curveBumpY)
         .source(d => d.source_coordinates)
         .target(d => d.target_coordinates)
         .x(d => xScale(d[0]))
         .y(d => yScale(d[1]))
+    */
 
     // Draw edges for abstraction level graph
     // Link drawing function according to a cubic bezier-curve
+    const linkBundled = defineLinkBezier(xScale, yScale);
+    /*
     const linkBundled = d => {
         // Calculate the source and target coordinates
         const [sourceX, sourceY] = [xScale(d.source_coordinates[0]), yScale(d.source_coordinates[1])];
@@ -184,7 +190,7 @@ async function draw(inputData = null) {
         const verticalMidPointY = sourceY + (targetY - sourceY) * curveStrength - curveOffset;
 
         return `M${sourceX},${sourceY} C${sourceX},${verticalMidPointY} ${targetX},${verticalMidPointY} ${targetX},${targetY}`;
-    };
+    };*/
 
 
 
