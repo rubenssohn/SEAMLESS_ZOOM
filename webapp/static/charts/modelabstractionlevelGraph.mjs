@@ -2,8 +2,6 @@
 // DRAW AN INSTANCE GRAPH
 // -----
 
-// TODO: Create the link function outside of this function
-
 function renderAbstractionLevelGraph(
     multilevelGraphData, currentLevelIndex, previousLevelIndex, 
     link, container, xScale, yScale, options = {}) {

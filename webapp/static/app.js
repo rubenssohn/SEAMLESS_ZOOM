@@ -14,6 +14,7 @@ import { assignGraphByContours } from './vizmodules/graphContoursMapping.mjs';
 import { multiLevelGraphBuilder } from './vizmodules/multiLevelGraphBuilder.mjs';
 import { renderInstanceGraph } from './charts/instanceGraph.mjs';
 import { renderAbstractionLevelGraph } from './charts/modelabstractionlevelGraph.mjs';
+import { defineArrowHeads } from './components/arrowheads.mjs';
 
 // Graph drawing function
 async function draw(inputData = null) {
@@ -114,8 +115,10 @@ async function draw(inputData = null) {
         .attr("height", dimensions.height)
 
     // Create marker points for arrowheads
-    const defs = svg.append("defs");
+    //const defs = svg.append("defs");
+    defineArrowHeads(svg);
 
+    /*
     const markerBoxWidth = 10;
     const matchBoxHeight = 10;   
     const refXarrow = 15;
@@ -152,6 +155,7 @@ async function draw(inputData = null) {
         .append('path')
         .attr("d", "M0,0 L10,5 L0,10 L2,5 Z")
         .attr("class", "arrowhead-shape-down")
+    */
     
     // Draw container
     const ctr = svg.append("g")
