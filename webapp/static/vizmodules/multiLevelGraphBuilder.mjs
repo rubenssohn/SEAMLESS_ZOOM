@@ -33,7 +33,6 @@ function multiLevelGraphBuilder(graphData, levelData, xAccessor, yAccessor) {
 
         // Add edges
         let superEdges = defineSuperEdges(cumulativeLevelGraph.edges, superNodes, nodes(graphData), xAccessor, yAccessor, levelIndex)
-        //console.log(superEdges)
         level.edges.push(...superEdges)
 
         // Add the level with all data

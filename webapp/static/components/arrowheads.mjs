@@ -26,13 +26,6 @@ function defineArrowHeads(svg, options = {}) {
     // Create marker points for arrowheads
     const defs = svg.append("defs");
 
-    //const markerBoxWidth = 10;
-    //const matchBoxHeight = 10;   
-    //const refXarrow = 15;
-    //const refYarrow = 5;
-    //const markerWidth = 7;
-    //const markerHeight = 7;
-
     // Up arrows
     defs.append("marker")
         .attr("id", classIdArrowHeadUp)

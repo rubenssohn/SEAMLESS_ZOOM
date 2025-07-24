@@ -71,7 +71,6 @@ function renderAbstractionLevelGraph(
             d3.selectAll(instanceEdgeIds.join(",")).classed(classNameHiddenInstanceEdges, true);
         }
     }
-    // previousLevelIndex = currentLevelIndex;
 
     if (!levelGraph) return;
     
@@ -83,32 +82,12 @@ function renderAbstractionLevelGraph(
     // Create a super edges group
     const superEdgesGroup = layer.append("g").attr("class", classNameAbstractionLevelEdges);
     
-    /*
-    // Link drawing function according to a cubic bezier-curve
-    const linkSuper = d => {
-        // Calculate the source and target coordinates
-        const [sourceX, sourceY] = [xScale(d.source_coordinates[0]), yScale(d.source_coordinates[1])];
-        const [targetX, targetY] = [xScale(d.target_coordinates[0]), yScale(d.target_coordinates[1])];
-        
-        // Define the curve strength and mid-point
-        const curveStrength = 0.3;
-        const curveOffset = 0;
-        const verticalMidPointY = sourceY + (targetY - sourceY) * curveStrength - curveOffset;
-
-        return `M${sourceX},${sourceY} C${sourceX},${verticalMidPointY} ${targetX},${verticalMidPointY} ${targetX},${targetY}`;
-    };*/
-    
-    
     superEdgesGroup.selectAll("path")
         .data(edges)
         .join("path")
         .attr("d", link)
         .attr("fill", "none")
-        //.attr("stroke", "#555")
-        //.attr("stroke-width", d => d.frequency || 1)
-        //.attr("stroke-width", d => strokeScale(+d.frequency || 0))
         .attr("stroke-width", strokeWidth)
-        //.attr("stroke-opacity", 0.6)
         .attr('class', d =>
             yScale(d.source_coordinates[1]) > yScale(d.target_coordinates[1])
                 ? classNameAbstractLevelEdgeUp
@@ -131,7 +110,6 @@ function renderAbstractionLevelGraph(
 
     // Draw super nodes as boxes (range)
     const superNodeRects = superNodesGroup.selectAll("rect")
-    //superNodesGroup.selectAll("rect")
         .data(nodes)
         .join("rect")
         .attr("x", d => xScale(d.x.min) - 7)
@@ -142,23 +120,15 @@ function renderAbstractionLevelGraph(
         .attr("ry", 5)
         .attr("class", classNameRectNode)
         .attr("opacity", opacityLevelActRange)
-    
-
-    // Animate super nodes as boxes
-    //superNodeRects.transition()
 
     // Draw super nodes as circles (mean)
     const superNodeCircles = superNodesGroup.selectAll("circle")
-    //superNodesGroup.selectAll("circle")
         .data(nodes)
         .join("circle")
         .attr("cx", d => xScale(d.x.mean))
         .attr("cy", d => yScale(d.y))
         .attr("r", 5)
         .attr("class", classNameCircleNode)
-
-    // Animate super nodes as circles
-    //superNodeCircles.transition()
 
     // Draw classic activity boxes 
     const classicActivityGroup = layer.append("g").attr("class", classNameClassicActivityGroup);
@@ -184,7 +154,6 @@ function renderAbstractionLevelGraph(
         .attr("text-anchor", classClassicRectNodeTextAlignment)     // center align
         .attr("alignment-baseline", classClassicRectNodeTextAlignment)
         .attr("class", classNameClassicActivityLabel)
-        //.text(d => d.y);
         .text(d => {
             const label = d.y;
             const maxLength = 20;

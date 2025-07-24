@@ -22,10 +22,6 @@ function defineLinkBezier(xScale, yScale, options = {}) {
         // Calculate the source and target coordinates
         const [sourceX, sourceY] = [xScale(d.source_coordinates[0]), yScale(d.source_coordinates[1])];
         const [targetX, targetY] = [xScale(d.target_coordinates[0]), yScale(d.target_coordinates[1])];
-        
-        // Define the curve strength and mid-point
-        //const curveStrength = 0.3;
-        //const curveOffset = 0;
         const verticalMidPointY = sourceY + (targetY - sourceY) * curveStrength - curveOffset;
         
         return `M${sourceX},${sourceY} C${sourceX},${verticalMidPointY} ${targetX},${verticalMidPointY} ${targetX},${targetY}`;

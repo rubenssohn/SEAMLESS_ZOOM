@@ -51,7 +51,6 @@ function renderInstanceGraph(graphData, link, container, xAccessor, xScale, yAcc
         .attr('cx', d => xScale(xAccessor(d)))
         .attr('cy', d => yScale(yAccessor(d)))
         .attr('r', 2)
-        //.attr('fill', '#f03b20')
         .attr('class', classNameNode)
         .attr('case', caseAccessor)
         .attr('activity', actAccessor)
