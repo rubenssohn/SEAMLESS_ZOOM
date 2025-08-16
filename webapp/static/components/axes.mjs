@@ -69,7 +69,7 @@ function drawAxis(container, scale, orientation, dimensions, options = {}) {
             },
             left: {
                 x: -dimensions.ctrHeight / 2,
-                y: -dimensions.margin.left + labelDistance,
+                y: dimensions.margin.left + labelDistance,
                 rotation: labelRotationDegree || -90,
                 anchor: 'middle'
             },
