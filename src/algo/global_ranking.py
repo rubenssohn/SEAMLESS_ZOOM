@@ -20,9 +20,6 @@ E-Mail: {firstname.lastname}@hu-berlin.de
 '''
 
 # Ranking algorithms for event data
-import pandas as pd
-import networkx as nx
-import numpy as np
 import pm4py
 from src.utils.data_processing import create_dict_from_integer, filter_tuplekeys_by_prefix, sort_dict_by_values, switch_item_key_in_dictionary
 
