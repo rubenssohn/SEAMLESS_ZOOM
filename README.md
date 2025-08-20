@@ -84,4 +84,4 @@ The application should be able to render any typical benchmark event log in proc
 ---
 ## Licences and Dependencies
 
-This project is distributed under the AGPLv3. It makes use of third-party Python and JavaScript packages, whose licenses are provided in the LICENCE_thirdparty/ directory.
+This project is distributed under the AGPLv3. It makes use of third-party Python and JavaScript packages, whose licenses are provided in the LICENCES_thirdparty/ directory.
