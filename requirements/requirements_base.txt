@@ -4,7 +4,6 @@ numpy
 pandas
 pm4py
 # === Optional for Jupyter notebook ===
-matplotlib
 plotly
 ipykernel
 pygraphviz
