@@ -11,7 +11,7 @@ This repository comprises a web application to seamlessly transition between ins
 This project is associated with a technique proposed in the paper *Time-Order Map for Seamless Zooming between
 Process Models and Process Instances* by *Christoffer Rubensson* and *Jan Mendling*, which will be presented at the *7th International Conference on Process Mining (ICPM)*, October 20-24, in Montevideo, Uruguay, and later published as an *IEEE Computational Intelligence Society* conference proceeding.
 
-> **Please note:** that this project will be further developed. Therefore, for those interested, the software version associated with the ICPM paper is available as a release under the name ***v3.0 (ICPM 2025 camera-ready)***. 
+> **Please note:** that this project will be further developed. Therefore, for those interested, the software version associated with the ICPM paper is available as a release under the name ***v3.0-icpm2025-cameraready***. 
 
 ---
 
