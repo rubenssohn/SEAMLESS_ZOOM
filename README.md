@@ -101,6 +101,9 @@ The application should be able to render any typical benchmark event log in proc
 * Filter logs (< 1,000 cases).
 * Use *Enable instance element rendering* only for smaller logs (e.g., 100 cases). Use instead the dynamic opacity parameters (*Edges/Graph*).
 
+### Contact:
+Feel free to contact me for any problems with the program. You find my contact details on https://hu-berlin.de/rubensson.
+
 ---
 ## Licences and dependencies
 
