@@ -1,8 +1,18 @@
 # SEAMLESS_ZOOM
-This repository comprises a web application to seamlessly transition between instance- and process-level over multiple abstraction levels of event data in process mining. 
+This repository comprises a web application to seamlessly transition between instance- and process-level over multiple abstraction levels of event data in process mining using semantic zooming and contour diagrams.
 
-![Demo GIF](images/example-slider.gif)
-*Figure: GIF demonstrating the application for the running example.*
+<center>
+    <img src="images/readme_images/example-slider.gif" alt="*" style="width:auto; height:500;">
+    <figcaption> Figure: GIF demonstrating the application for the running example.</figcaption>
+</center>
+
+---
+### Reference and release note
+
+This project is associated with a technique proposed in the paper *Time-Order Map for Seamless Zooming between
+Process Models and Process Instances* by *Christoffer Rubensson* and *Jan Mendling*, which will be presented at the *7th international conference on process mining (ICPM)*, October 20-24, in Montevideo, Uruguay, and later published as an *IEEE Computational Intelligence Society* conference proceeding.
+
+Please note that this project will be further developed. Therefore, for those interested, the software version associated with the ICPM paper is available as a release under the name *Version 3.0 (ICPM camera-ready)*. 
 
 ---
 
@@ -29,18 +39,23 @@ Some logs recommended are:
 * Sepsis cases: https://doi.org/10.4121/uuid:915d2bfb-7e84-49ad-a286-dc35f063a460
 * Road traffic fine management process: https://doi.org/10.4121/uuid:270fd440-1057-4fb9-89a9-b699b47990f5
 
-## Define new abstraction levels
-See *Contour lines* below.
-
 ## Interface
 ### Element transitions
 The following parameters adapt the visual encoding of the graph and the transitions. 
 
-* *Gradual change in opacity for instance elements*: Enable the the opacity level of the underlying instance graph to be dynamically adapted with the abstraction level. (*Off*: Graph always visible; *Edges*: Only adapt edges; *Graph*: Adapt entire graph)
+* *Incremental change in opacity for instance elements*: Enable the the opacity level of the underlying instance graph to be dynamically adapted with the abstraction level. (*Off*: Graph always visible; *Edges*: Only adapt edges; *Graph*: Adapt entire graph)
 * *Enable instance element rendering*: Enable all visual elements to be dynamically hidden with the abstraction levels. (*Note: Enabling this alternative slows down performance.)*
 * *Show/Hide activities*: Change the visual encoding to a typical DFG.
 
-### Contour lines
+
+<center>
+<img src="images/readme_images/interface_opacitychanges.gif" border="1" style="width:auto; height:300;">
+<img src="images/readme_images/interface_showhideactivities.gif" border="1" style="width:auto; height:300;">
+<figcaption> Figures: (left) Opacity configuration and instance element rendering; (right) Show and hide activities.</figcaption>
+</center>
+
+### Contour lines (Define new abstraction levels)
+
 The following parameters can be used to redefine the abstraction levels using a contour diagram.
 
 * *Bandwidth*: Changes the smoothness of the kernel density estimator that produces the contour diagram.
@@ -48,7 +63,13 @@ The following parameters can be used to redefine the abstraction levels using a 
 * *Show/Hide contour lines*: Shows or hides the contour diagram.
 * *Update Graph*: Updates the graph with new abstraction levels based on the current contour diagram configurations.
 
+<center>
+    <img src="images/readme_images/interface_contourdiagrams.gif" border="1" style="width:auto; height:300;">
+    <figcaption> Figure: Using contour diagrams to define abstraction levels.</figcaption>
+</center>
+
 ### Import / Export
+
 * *Choose File*: Choose a file to upload. Only takes .xes- and (pre-processed) .csv files.
 * *Import Event Log*: Import the uploaded file. When done, the graph will be updated.
 * *Reset to Example Log*: Reset the graph to the example log in `"data/example_data"`.
@@ -82,6 +103,6 @@ The application should be able to render any typical benchmark event log in proc
 * Use *Enable instance element rendering* only for smaller logs (e.g., 100 cases). Use instead the dynamic opacity parameters (*Edges/Graph*).
 
 ---
-## Licences and Dependencies
+## Licences and dependencies
 
-This project is distributed under the AGPLv3. It makes use of third-party Python and JavaScript packages, whose licenses are provided in the LICENCES_thirdparty/ directory.
+This project is distributed under the AGPLv3. It makes use of third-party Python and JavaScript packages, whose licenses are provided in the `LICENCES_thirdparty/` directory.
