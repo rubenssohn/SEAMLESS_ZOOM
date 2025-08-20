@@ -80,3 +80,8 @@ This is a bug that will be fixed soon.
 The application should be able to render any typical benchmark event log in process mining relatively quickly. However, large data sets (approx. > 10,000 cases) can result in slower transitions. Therefore, it is recommended to:
 * Filter logs (< 1,000 cases).
 * Use *Enable instance element rendering* only for smaller logs (e.g., 100 cases). Use instead the dynamic opacity parameters (*Edges/Graph*).
+
+---
+## Licences and Dependencies
+
+This project is distributed under the AGPLv3. It makes use of third-party Python and JavaScript packages, whose licenses are provided in the LICENCE_thirdparty/ directory.
