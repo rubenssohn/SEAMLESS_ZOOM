@@ -1,10 +1,9 @@
 # SEAMLESS_ZOOM
 This repository comprises a web application to seamlessly transition between instance- and process-level over multiple abstraction levels of event data in process mining using semantic zooming and contour diagrams.
 
-<center>
-    <img src="images/readme_images/example-slider.gif" alt="*" style="width:auto; height:500;">
-    <figcaption> Figure: GIF demonstrating the application for the running example.</figcaption>
-</center>
+![Figure: GIF demonstrating the application for the running example.](images/readme_images/example-slider.gif)
+
+*Figure: GIF demonstrating the application for the running example.*
 
 ---
 ### Reference and release note
@@ -47,12 +46,13 @@ The following parameters adapt the visual encoding of the graph and the transiti
 * *Enable instance element rendering*: Enable all visual elements to be dynamically hidden with the abstraction levels. (*Note: Enabling this alternative slows down performance.)*
 * *Show/Hide activities*: Change the visual encoding to a typical DFG.
 
+![Figure: Opacity configuration and instance element rendering.](images/readme_images/interface_opacitychanges.gif)
 
-<center>
-<img src="images/readme_images/interface_opacitychanges.gif" border="1" style="width:auto; height:300;">
-<img src="images/readme_images/interface_showhideactivities.gif" border="1" style="width:auto; height:300;">
-<figcaption> Figures: (left) Opacity configuration and instance element rendering; (right) Show and hide activities.</figcaption>
-</center>
+*Figure: Opacity configuration and instance element rendering.*
+
+![Figure: Show and hide activities.](images/readme_images/interface_showhideactivities.gif)
+
+*Figure: Show and hide activities.*
 
 ### Contour lines (Define new abstraction levels)
 
@@ -63,10 +63,9 @@ The following parameters can be used to redefine the abstraction levels using a 
 * *Show/Hide contour lines*: Shows or hides the contour diagram.
 * *Update Graph*: Updates the graph with new abstraction levels based on the current contour diagram configurations.
 
-<center>
-    <img src="images/readme_images/interface_contourdiagrams.gif" border="1" style="width:auto; height:300;">
-    <figcaption> Figure: Using contour diagrams to define abstraction levels.</figcaption>
-</center>
+![Figure: Using contour diagrams to define abstraction levels.](images/readme_images/interface_contourdiagrams.gif)
+
+*Figure: Using contour diagrams to define abstraction levels.*
 
 ### Import / Export
 
