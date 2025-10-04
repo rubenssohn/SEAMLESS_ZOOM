@@ -62,7 +62,7 @@ async function draw(inputData = null) {
         }
     }
     // Listener for switching graph viewer
-    d3.selectAll('input[name="option-switcher-graph-type"]').on("change", function () {
+    d3.selectAll('input[name="option-switcher-graph-view"]').on("change", function () {
         graphViewSelection = +this.value;
         graphViewSwitcher(graphViewSelection, csvdata);
     });
