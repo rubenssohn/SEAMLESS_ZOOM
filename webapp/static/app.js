@@ -28,9 +28,10 @@ import { TIMEORDERMAP } from './views/timeOrderMap.js';
 import { SPACEORDERMAP } from './views/spaceOrderMap.js';
 
 // == MAIN GRAPH DRAWING FUNCTION ==
-async function draw(inputData = null, graphType = "time-order-map") {
+async function draw(inputData = null) {
     // == INITIALIZATION ==
     d3.select("#chart").selectAll("*").remove();
+    // Data import
     let csvdata = inputData;
     if (!csvdata) {
         try {
@@ -41,30 +42,29 @@ async function draw(inputData = null, graphType = "time-order-map") {
         }
     }
 
-    // == GRAPH TYPE SELECTION ==
-    if (graphType === "time-order-map") {
-        TIMEORDERMAP(csvdata);
-    } else if (graphType === "space-order-map") {
-        SPACEORDERMAP(csvdata);
-    } else {
-        console.error("Unknown view:", graphType);
-    }
+    // Variable initialization
+    let graphViewSelection = 0; // 0: Time-Order Map, 1: Space-Order Map
 
-    // Listener for graph type selection
-    let switcherGraphType = 0;
-    d3.selectAll('input[name="option-switcher-graph-type"]').on("change", function () {
-        switcherGraphType = +this.value;
-        if (switcherGraphType === 0) {
+    // == GRAPH VIEW SELECTION ==
+    graphViewSwitcher(graphViewSelection, csvdata);
+    // Function to switch between graph views
+    function graphViewSwitcher(graphViewSelection, csvdata) {
+        if (graphViewSelection === 0) {
             console.info("Switching to Time-Order Map");
             d3.select("#chart").selectAll("*").remove();
             TIMEORDERMAP(csvdata);
-        } else if (switcherGraphType === 1) {
+        } else if (graphViewSelection === 1) {
             console.info("Switching to Space-Order Map");
             d3.select("#chart").selectAll("*").remove();
-            //SPACEORDERMAP(csvdata);
+            SPACEORDERMAP(csvdata);
         } else {
-            console.error("Unknown view:", switcherGraphType);
+            console.error("Unknown view:", graphViewSelection);
         }
+    }
+    // Listener for switching graph viewer
+    d3.selectAll('input[name="option-switcher-graph-type"]').on("change", function () {
+        graphViewSelection = +this.value;
+        graphViewSwitcher(graphViewSelection, csvdata);
     });
 };
 
