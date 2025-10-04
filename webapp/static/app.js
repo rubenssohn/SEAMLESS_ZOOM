@@ -25,9 +25,10 @@ E-Mail: {firstname.lastname}@hu-berlin.de
 // == IMPORT ==
 import { exportData } from './utils/exportData.mjs';
 import { TIMEORDERMAP } from './views/timeOrderMap.js';
+import { SPACEORDERMAP } from './views/spaceOrderMap.js';
 
 // == MAIN GRAPH DRAWING FUNCTION ==
-async function draw(inputData = null) {
+async function draw(inputData = null, graphType = "time-order-map") {
     // == INITIALIZATION ==
     d3.select("#chart").selectAll("*").remove();
     let csvdata = inputData;
@@ -39,7 +40,14 @@ async function draw(inputData = null) {
             return;
         }
     }
-    TIMEORDERMAP(csvdata);
+    // == GRAPH TYPE SELECTION ==
+    if (graphType === "time-order-map") {
+        TIMEORDERMAP(csvdata);
+    } else if (graphType === "space-order-map") {
+        SPACEORDERMAP(csvdata);
+    } else {
+        console.error("Unknown view:", graphType);
+    }
 };
 
 draw();
