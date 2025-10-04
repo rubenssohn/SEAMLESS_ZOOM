@@ -43,6 +43,7 @@ async function draw(inputData = null) {
     }
 
     // Variable initialization
+    // TEST
     let graphViewSelection = 0; // 0: Time-Order Map, 1: Space-Order Map
 
     // == GRAPH VIEW SELECTION ==
