@@ -52,10 +52,13 @@ async function draw(inputData = null) {
         if (graphViewSelection === 0) {
             console.info("Switching to Time-Order Map");
             d3.select("#chart").selectAll("*").remove();
+            // Update the page title (h1)
+            d3.select("h1").text("Time-Order Map");
             TIMEORDERMAP(csvdata);
         } else if (graphViewSelection === 1) {
             console.info("Switching to Space-Order Map");
             d3.select("#chart").selectAll("*").remove();
+            d3.select("h1").text("Space-Order Map (work-in-progress)");
             SPACEORDERMAP(csvdata);
         } else {
             console.error("Unknown view:", graphViewSelection);
