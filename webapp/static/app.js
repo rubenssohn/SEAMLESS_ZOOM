@@ -40,6 +40,7 @@ async function draw(inputData = null, graphType = "time-order-map") {
             return;
         }
     }
+
     // == GRAPH TYPE SELECTION ==
     if (graphType === "time-order-map") {
         TIMEORDERMAP(csvdata);
@@ -48,6 +49,23 @@ async function draw(inputData = null, graphType = "time-order-map") {
     } else {
         console.error("Unknown view:", graphType);
     }
+
+    // Listener for graph type selection
+    let switcherGraphType = 0;
+    d3.selectAll('input[name="option-switcher-graph-type"]').on("change", function () {
+        switcherGraphType = +this.value;
+        if (switcherGraphType === 0) {
+            console.info("Switching to Time-Order Map");
+            d3.select("#chart").selectAll("*").remove();
+            TIMEORDERMAP(csvdata);
+        } else if (switcherGraphType === 1) {
+            console.info("Switching to Space-Order Map");
+            d3.select("#chart").selectAll("*").remove();
+            //SPACEORDERMAP(csvdata);
+        } else {
+            console.error("Unknown view:", switcherGraphType);
+        }
+    });
 };
 
 draw();
