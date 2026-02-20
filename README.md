@@ -8,7 +8,7 @@ This repository comprises a web application to seamlessly transition between ins
 ---
 ### Reference and release note
 
-This project is associated with a technique proposed in the paper. If you would like to use this project in other publications, please cite:
+This project is associated with a visual technique proposed at the ICPM 2025 conference in Uruguay, Montevideo. If you would like to use this project in other publications, please cite:
 
 C. Rubensson and J. Mendling, "Time-Order Map for Seamless Zooming between Process Models and Process Instances," 2025 7th International Conference on Process Mining (ICPM), Montevideo, Uruguay, 2025, pp. 1-8, doi: https://www.doi.org/10.1109/ICPM66919.2025.11220736.
 
@@ -105,7 +105,7 @@ The application should be able to render any typical benchmark event log in proc
 * Use *Enable instance element rendering* only for smaller logs (e.g., 100 cases). Use instead the dynamic opacity parameters (*Edges/Graph*).
 
 ### Contact:
-Feel free to contact me for any problems with the program. You find my contact details on https://hu-berlin.de/rubensson.
+Feel free to contact me for any problems with the program. You find my contact details on https://www.informatik.hu-berlin.de/de/forschung/gebiete/promis/team/christoffer-rubensson.
 
 ---
 ## Licences and dependencies
