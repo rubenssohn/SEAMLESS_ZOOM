@@ -8,10 +8,11 @@ This repository comprises a web application to seamlessly transition between ins
 ---
 ### Reference and release note
 
-This project is associated with a technique proposed in the paper *Time-Order Map for Seamless Zooming between
-Process Models and Process Instances* by *Christoffer Rubensson* and *Jan Mendling*, which will be presented at the *7th International Conference on Process Mining (ICPM)*, October 20-24, in Montevideo, Uruguay, and later published as an *IEEE Computational Intelligence Society* conference proceeding.
+This project is associated with a technique proposed in the paper. If you would like to use this project in other publications, please cite:
 
-> **Please note:** that this project will be further developed. Therefore, for those interested, the software version associated with the ICPM paper is available as a release under the name ***v3.0-icpm2025-cameraready***. 
+C. Rubensson and J. Mendling, "Time-Order Map for Seamless Zooming between Process Models and Process Instances," 2025 7th International Conference on Process Mining (ICPM), Montevideo, Uruguay, 2025, pp. 1-8, doi: https://www.doi.org/10.1109/ICPM66919.2025.11220736.
+
+> Note: This project will be further developed. Therefore, for those interested, the software version associated with the submission of the camera-ready version can consider the release with the name: ***v3.0-icpm2025-cameraready***. 
 
 ---
 
@@ -20,6 +21,8 @@ Process Models and Process Instances* by *Christoffer Rubensson* and *Jan Mendli
 2. Create a new virtual environment with `python -m venv [namevenv]` (Recommended)
 3. Activate the new virtual environment with `python -m venv [namevenv]` (Recommended)
 3. Install the necessary requirements with `pip install -r requirements/requirements_base.txt` (alternative: `pip install -r requirements/requirements_freeze202505.txt`)
+
+> Note: Different branches might change the structure of the project. Use the main branch for a clean project. 
 
 ---
 ## HOW TO USE THE APPLICATION: 
