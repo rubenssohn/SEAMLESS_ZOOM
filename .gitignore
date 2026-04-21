@@ -21,10 +21,10 @@ seamvenv/
 Thumbs.db
 
 # Logs and data you want ignored
-data/evaluation_data/roadtrafficfine.xes
-data/evaluation_data/roadtrafficfine_1050.xes
-data/evaluation_data/sepsis.xes
+!data/evaluation_data/runningexample.xes
+data/evaluation_data/
 data/test_data/
+data/processed_event_data/
 
 # Test notebooks
 notebooks/test_notebook.ipynb
