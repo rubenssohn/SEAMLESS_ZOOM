@@ -27,7 +27,8 @@ data/test_data/
 data/processed_event_data/
 
 # Test notebooks
-notebooks/test_notebook.ipynb
+notebooks/
+!notebooks/example_notebook.ipynb
 
 # Test environment
 testapp/
