@@ -31,8 +31,22 @@
   </script>
 </head>
 
+  <!-- Banner -->
+  <header>
+    <h1>Time-Order Map for Seamless Zooming</h1>
+
+    <!-- Import/Export parameters --> 
+    <div class="menu">
+      <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="file" accept=".csv, .xes" />
+        <button type="button-import" id="button-import">Import</button>
+      </form>
+      <button id="button-export">Export</button>
+      <button id="button-reset">Example</button>
+    </div>
+  </header>
+
 <body>
-  <center><h1>Time-Order Map for Seamless Zooming</h1></center>
   <div id="main-layout">
       <!-- Graph and slider-->
       <div id="graph-section">
@@ -111,27 +125,6 @@
             <button id="button-update-abstraction-graph">Update Graph</button>
             <div id="graph-update-status" style="margin-top: 10px; font-style: italic;"></div>
           </div> 
-        </div>
-
-        <!-- Import/Export parameters --> 
-        <div id="parameters-import">
-          <h3>Import:</h3>
-          <div class="param-group">
-            <form id="upload-form" enctype="multipart/form-data">
-              <input type="file" id="file-input" name="file" accept=".csv, .xes" />
-              <button type="button-import" id="button-import">Import Event Log</button>
-            </form>
-          </div>
-
-          <div class="param-group">
-            <button id="button-reset">Reset to Example Log</button>
-          </div>
-
-          <h3>Export:</h3>
-          <div class = "param-group">
-            <!--<button id="button-export" onclick="exportData()">Export SVG</button>-->
-            <button id="button-export">Export SVG</button>
-          </div>
         </div>
       </div>
   </div>

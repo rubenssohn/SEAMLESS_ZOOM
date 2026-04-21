@@ -1,3 +1,64 @@
+/* HEADER */
+header {
+width: 100%;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+font-family: "Arial", sans-serif;
+background: #eeeeee;
+color: #d3d3d3;
+}
+
+h1 {
+  white-space: nowrap;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto; 
+}
+
+#upload-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#button-import, 
+#button-export, 
+#button-reset {
+  background-color: #dbdbdb; 
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(147, 147, 147);
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+#button-import:hover, 
+#button-export:hover {
+  background-color: #b2d1f2;
+}
+
+#button-reset:hover {
+  background-color: #f2e4b2;
+}
+
+/* BODY */
 #main-layout {
   display: flex;
   flex-direction: column;
@@ -100,23 +161,6 @@
   padding: 0.5rem;
   font-size: 1rem;
   box-sizing: border-box;
-}
-
-#button-import {
-  background-color: #dbdbdb; 
-  color: rgb(0, 0, 0);
-  border: 1px solid rgb(147, 147, 147);
-  padding: 0.6rem 1.2rem;
-  border-radius: 20px;
-  font-size: 1rem;
-  font-weight: 400;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin-left: 1rem;
-}
-
-#button-import:hover {
-  background-color: #0a71de;
 }
 
 h3 {
