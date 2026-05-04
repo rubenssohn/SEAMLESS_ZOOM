@@ -29,10 +29,10 @@ let dimensions = {
     height: 500, // default: 500
     margin: 
     {
-        top: 50,
-        bottom: 50,
+        top: 50, // 50 for standard
+        bottom: 50, // 50 for standard
         left: 230, //140 for standard // 230 for large activity names
-        right: 50,
+        right: 50, // 50 for standard
     }
 };
 

@@ -300,6 +300,9 @@ function TIMEORDERMAP(csvdata) {
 
     renderInstanceGraph(data, linkInstance, ctr, timeAccessor, xScale, actAccessor, yScale);
     console.log("end")
+    
+    console.log("Converted graph data:")
+    console.log(data)
 };
 
 export { TIMEORDERMAP };
