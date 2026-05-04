@@ -25,7 +25,6 @@ E-Mail: {firstname.lastname}@hu-berlin.de
 // == IMPORT ==
 import { exportData } from './utils/exportData.mjs';
 import { TIMEORDERMAP } from './views/timeOrderMap.js';
-import { SPACEORDERMAP } from './views/spaceOrderMap.js';
 
 // == MAIN GRAPH DRAWING FUNCTION ==
 async function draw(inputData = null) {
@@ -43,8 +42,7 @@ async function draw(inputData = null) {
     }
 
     // Variable initialization
-    // TEST
-    let graphViewSelection = 0; // 0: Time-Order Map, 1: Space-Order Map
+    let graphViewSelection = 0; // 0: Time-Order Map, (Can be extended with more views in the future)
 
     // == GRAPH VIEW SELECTION ==
     graphViewSwitcher(graphViewSelection, csvdata);
@@ -55,11 +53,6 @@ async function draw(inputData = null) {
             d3.select("#chart").selectAll("*").remove();
             d3.select("h1").text("Time-Order Map");
             TIMEORDERMAP(csvdata);
-        } else if (graphViewSelection === 1) {
-            console.info("Switching to Space-Order Map");
-            d3.select("#chart").selectAll("*").remove();
-            d3.select("h1").text("Space-Order Map (work-in-progress)");
-            SPACEORDERMAP(csvdata);
         } else {
             console.error("Unknown view:", graphViewSelection);
         }
